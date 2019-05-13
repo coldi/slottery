@@ -2,6 +2,10 @@
     "name": "slottery",
     "version": "0.1.0",
     "description": "Render to slots in React.",
+    "keywords": [
+        "react",
+        "slots"
+    ],
     "author": "Felix Laukel <felix@laukel.com>",
     "main": "dist/index.js",
     "umd:main": "dist/slottery.umd.production.js",
@@ -16,7 +20,7 @@
         "test": "tsdx test --env=jsdom --watchAll"
     },
     "peerDependencies": {
-        "react": ">=16"
+        "react": ">=16.8.0"
     },
     "husky": {
         "hooks": {
