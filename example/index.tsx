@@ -1,7 +1,7 @@
 import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { SlotProvider, Slot, RenderAt } from '../src';
+import { SlotProvider, Slot, RenderInto } from '../src';
 
 interface LayoutProps {
     children?: React.ReactNode;
@@ -37,14 +37,14 @@ const App = () => {
     return (
         <>
             <Layout>
-                <RenderAt slot="header">
+                <RenderInto slot="header">
                     <h1>{active ? 'Toggled header' : 'Hello slot'}</h1>
-                </RenderAt>
+                </RenderInto>
                 <p>Default child content</p>
             </Layout>
-            <RenderAt slot="content">
+            <RenderInto slot="content">
                 <button onClick={handleClick}>Toggle render slot</button>
-            </RenderAt>
+            </RenderInto>
         </>
     );
 };

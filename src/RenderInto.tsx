@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import * as React from 'react';
 import { SlotContext, SlotContextValue } from './SlotContext';
 
 interface Props {
@@ -6,16 +6,18 @@ interface Props {
     children?: React.ReactNode;
 }
 
-export function RenderAt({ slot: slotName, children }: Props) {
-    const [identifier] = useState<symbol>(Symbol(slotName));
-    const { setSlot, deleteSlot } = useContext(SlotContext) as SlotContextValue;
+export function RenderInto({ slot: slotName, children }: Props) {
+    const [identifier] = React.useState<symbol>(Symbol(slotName));
+    const { setSlot, deleteSlot } = React.useContext(
+        SlotContext
+    ) as SlotContextValue;
 
     setSlot(slotName, {
         identifier,
         children,
     });
 
-    useEffect(() => {
+    React.useEffect(() => {
         return () => {
             // clean up slot
             deleteSlot(slotName, identifier);

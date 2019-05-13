@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import * as React from 'react';
 import { SlotContext, SlotContextValue } from './SlotContext';
 import { useForceUpdate } from './useForceUpdate';
 
@@ -9,7 +9,7 @@ interface Props {
 
 export function Slot({ name, children = null }: Props) {
     const forceUpdate = useForceUpdate();
-    const { registerSlotUpdate, getSlot } = useContext(
+    const { registerSlotUpdate, getSlot } = React.useContext(
         SlotContext
     ) as SlotContextValue;
 

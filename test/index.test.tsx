@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render, cleanup, fireEvent } from 'react-testing-library';
 import 'jest-dom/extend-expect';
-import { SlotProvider, Slot, RenderAt } from '../src';
+import { SlotProvider, Slot, RenderInto } from '../src';
 
 interface LayoutProps {
     children?: React.ReactNode;
@@ -53,9 +53,9 @@ describe('Provider > Layout > Slots', () => {
         const { container } = render(
             <SlotProvider>
                 <Layout>
-                    <RenderAt slot="header">
+                    <RenderInto slot="header">
                         <h1>hello slot</h1>
-                    </RenderAt>
+                    </RenderInto>
                 </Layout>
             </SlotProvider>
         );
@@ -70,9 +70,9 @@ describe('Provider > Layout > Slots', () => {
         const { container } = render(
             <SlotProvider>
                 <Layout />
-                <RenderAt slot="header">
+                <RenderInto slot="header">
                     <h1>hello slot</h1>
-                </RenderAt>
+                </RenderInto>
             </SlotProvider>
         );
         const header = container.querySelector('header');
@@ -91,20 +91,20 @@ describe('Layout > Provider > Slots', () => {
             render(
                 <>
                     <LayoutWithProvider>
-                        <RenderAt slot="header">
+                        <RenderInto slot="header">
                             <h1>hello slot</h1>
-                        </RenderAt>
+                        </RenderInto>
                     </LayoutWithProvider>
-                    <RenderAt slot="content">
+                    <RenderInto slot="content">
                         <p>hello slot</p>
-                    </RenderAt>
+                    </RenderInto>
                 </>
             )
         );
 
         console.error = jest.fn();
 
-        expect(() => testRender()).toThrowError(/(setSlot|RenderAt)/);
+        expect(() => testRender()).toThrowError(/(setSlot|RenderInto)/);
     });
 
     it('updates children of render slot', () => {
@@ -118,9 +118,9 @@ describe('Layout > Provider > Slots', () => {
             return (
                 <>
                     <LayoutWithProvider>
-                        <RenderAt slot="header">
+                        <RenderInto slot="header">
                             <h1>{active ? 'toggled' : 'slot'}</h1>
-                        </RenderAt>
+                        </RenderInto>
                     </LayoutWithProvider>
                     <button onClick={handleClick}>click</button>
                 </>
@@ -150,9 +150,9 @@ describe('Layout > Provider > Slots', () => {
                 <>
                     <LayoutWithProvider>
                         {active ? (
-                            <RenderAt slot="header">
+                            <RenderInto slot="header">
                                 <h1>toggled</h1>
-                            </RenderAt>
+                            </RenderInto>
                         ) : null}
                     </LayoutWithProvider>
                     <button onClick={handleClick}>click</button>

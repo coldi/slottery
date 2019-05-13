@@ -1,8 +1,8 @@
-import { useCallback, useState } from 'react';
+import * as React from 'react';
 
 export const useForceUpdate = () => {
-    const [, setState] = useState<any>();
-    return useCallback(() => {
+    const [, setState] = React.useState<any>();
+    return React.useCallback(() => {
         setState({});
     }, [setState]);
 };

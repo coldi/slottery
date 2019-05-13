@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import * as React from 'react';
 import { Slot, SlotContext, SlotContextValue } from './SlotContext';
 
 interface Props {
@@ -6,10 +6,10 @@ interface Props {
 }
 
 export function SlotProvider({ children }: Props) {
-    const slots = useMemo(() => new Map<string, Slot>(), []);
-    const updates = useMemo(() => new Map<string, Function>(), []);
+    const slots = React.useMemo(() => new Map<string, Slot>(), []);
+    const updates = React.useMemo(() => new Map<string, Function>(), []);
 
-    const value = useMemo<SlotContextValue>(
+    const value = React.useMemo<SlotContextValue>(
         () => ({
             registerSlotUpdate(name: string, update: VoidFunction) {
                 updates.set(name, update);
