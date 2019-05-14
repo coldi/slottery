@@ -2,6 +2,38 @@
 
 A React library that provides slots you can render into.
 
+⚠ **EXPERIMENTAL**
+
+## How to use
+
+```js
+import { SlotProvider, Slot, RenderInto } from 'slottery';
+
+function Layout({ children }) {
+    return (
+        <SlotProvider>
+            <header>
+                <Slot name="header">
+                    <h1>Default heading</h1>
+                </Slot>
+            </header>
+            <main>{children}</main>
+        </SlotProvider>
+    );
+}
+
+function App() {
+    return (
+        <Layout>
+            <RenderInto slot="header">
+                <h1>Hello slot</h1>
+            </RenderInto>
+            <p>Child content</p>
+        </Layout>
+    );
+}
+```
+
 ## Local Development
 
 This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).<br>

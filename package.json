@@ -7,6 +7,7 @@
         "slots"
     ],
     "author": "Felix Laukel <felix@laukel.com>",
+    "license": "MIT",
     "main": "dist/index.js",
     "umd:main": "dist/slottery.umd.production.js",
     "module": "dist/slottery.es.production.js",
