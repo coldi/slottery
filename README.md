@@ -2,22 +2,39 @@
 
 A React library that provides slots you can render into.
 
-⚠ **EXPERIMENTAL**
+It's similar to [VueJS slots](https://vuejs.org/v2/guide/components-slots.html), but with Slottery you can define the scope from where your slots can be accessed.
+
+If you use only one SlotProvider component at the top level, your slots become somewhat global and you can render into them from anywhere in your React app.
+
+If you use multiple SlotProvider components you can scope slots to be only available inside some components, like your base layout component.
+
+## Installation
+
+```
+npm install slottery
+```
 
 ## How to use
 
 ```js
-import { SlotProvider, Slot, RenderInto } from 'slottery';
-
 function Layout({ children }) {
     return (
         <SlotProvider>
             <header>
                 <Slot name="header">
-                    <h1>Default heading</h1>
+                    <h1>
+                        This will be replaced when rendering into "header" slot
+                    </h1>
                 </Slot>
             </header>
             <main>{children}</main>
+            <aside>
+                <Slot name="sidebar">
+                    <p>
+                        This will be replaced when rendering into "sidebar" slot
+                    </p>
+                </Slot>
+            </aside>
         </SlotProvider>
     );
 }
@@ -26,13 +43,22 @@ function App() {
     return (
         <Layout>
             <RenderInto slot="header">
-                <h1>Hello slot</h1>
+                <h1>Custom header</h1>
             </RenderInto>
-            <p>Child content</p>
+            <RenderInto slot="sidebar">
+                <p>Custom sidebar</p>
+            </RenderInto>
+            <p>This is just normal component children. Nothing special here.</p>
         </Layout>
     );
 }
 ```
+
+## Examples
+
+Codesandboxes: [Layout with slots](https://codesandbox.io/s/slotteryexample-21ks4) | [Top-level SlotProvider](https://codesandbox.io/s/slotteryexample-22uni)
+
+<hr>
 
 ## Local Development
 
