@@ -1,12 +1,16 @@
 {
     "name": "slottery",
-    "version": "0.1.0",
+    "version": "0.1.3",
     "description": "Render to slots in React.",
     "keywords": [
         "react",
         "slots"
     ],
     "author": "Felix Laukel <felix@laukel.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/coldi/slottery"
+    },
     "license": "MIT",
     "main": "dist/index.js",
     "umd:main": "dist/slottery.umd.production.js",
